@@ -1,0 +1,56 @@
+<style>
+table {
+    width:100%;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   background-coolor:#fff;
+}
+table#t01 th {
+    background-color: black;
+    color: white;
+}
+</style>
+<br><br>
+<center><form  id="form" method="POST">
+{% csrf_token %}
+    <label for="your_name">Farmer name: </label>
+    <input id="your_name" type="text" name="your_name" value=""  onchange="document.getElementById('form').action = '/clientrec/'+this.value+'/';" >
+    <input type="submit" value="OK" >
+</for
+ </center>
+ <br>
+ <br>
+<table id="t01">
+  <tr>
+    <th>Profile</th>
+    <th>Farms</th> 
+    <th>HouseHolds</th>
+    <th>Wells</th>
+  </tr>
+  <tr>
+    <td>Name:{{ farmer_name }}<br>Gender:{{ farmer_gender }}<br>Age: {{ farmer_age }}</td>
+    <td>Farm_(Lat,Lon): ({{ farmer_area_lat }}, {{ farmer_area_lon}})<br>Crop: {{ farmer_crop }}<br>
+    Crop_season :{{ farmer_crop_season }}<br> Crop_Area: {{ farmer_crop_area}}</td>
+    <td>House_(Lat,Lon): ({{ farmer_house_lat }}, {{ farmer_house_lon}})<br>House_Income: {{ farmer_house_income }}</td>
+    <td>Well_(Lat,Lon): ({{ farmer_well_lat }}, {{ farmer_well_lon}})<br>Depth:{{ farmer_well_depth }}<br>
+    Avg Water: {{farmer_well_avg_water}}<br>
+    Water Date: {{ farmer_waterdate }}<br>
+    Well Yeild: {{ farmer_wellyield }}
+
+    </td>
+  </tr>
+ 
+</table>
+<br>
+{{ Data }}
